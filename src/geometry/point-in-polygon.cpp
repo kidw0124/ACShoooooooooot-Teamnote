@@ -1,5 +1,4 @@
-typedef double coord_t;
-inline coord_t is_left(Point p0, Point p1, Point p2) {
+inline ld is_left(Point p0, Point p1, Point p2) {
   return (p1.x - p0.x) * (p2.y - p0.y) - (p2.x - p0.x) * (p1.y - p0.y);
 }
 // point in polygon test

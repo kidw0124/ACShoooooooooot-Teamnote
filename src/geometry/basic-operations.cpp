@@ -15,6 +15,18 @@ struct Point {
   Point operator+(const Point& rhs) const { return Point{x + rhs.x, y + rhs.y}; }
   Point operator-(const Point& rhs) const { return Point{x - rhs.x, y - rhs.y}; }
   Point operator*(ld t) const { return Point{x * t, y * t}; }
+  int pos() const {
+    if (y < 0) return -1;
+    if (y == 0 && 0 <= x) return 0;
+    return 1;
+  }
+  bool operator<(Point r) const { // sort by angle, ccw order from half line x≤0,y=0
+      if (pos() != r.pos()) return pos() < r.pos();
+      return 0 < (x * r.y - y * r.x);
+  }
+  Point rotate(ld theta) const {// rotate ccw by theta
+    return Point{x * cos(theta) - y * sin(theta), x * sin(theta) + y * cos(theta)};
+  }
 };
 struct Circle {
   Point center;
@@ -126,5 +138,11 @@ Circle circle_from_2pts_rad(const Point& a, const Point& b, ld r) {
     circle.center = (a + b) * 0.5 + Point{a.y - b.y, b.x - a.x} * h;
     circle.r = r;
   }
+  return circle;
+}
+Circle circle_from_2pts(const Point& a, const Point& b) {
+  Circle circle;
+  circle.center = (a + b) * 0.5;
+  circle.r = dist(a, b) / 2;
   return circle;
 }

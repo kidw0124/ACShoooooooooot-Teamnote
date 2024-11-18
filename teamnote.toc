@@ -2,70 +2,73 @@
 \contentsline {subsection}{\numberline {1.1}Default code}{1}%
 \contentsline {subsection}{\numberline {1.2}SIMD}{2}%
 \contentsline {section}{\numberline {2}Math}{2}%
-\contentsline {subsection}{\numberline {2.1}Basic Arithmetic}{2}%
-\contentsline {subsection}{\numberline {2.2}Linear Sieve}{2}%
-\contentsline {subsection}{\numberline {2.3}Primality Test}{3}%
-\contentsline {subsection}{\numberline {2.4}Integer Factorization (Pollard's rho)}{3}%
-\contentsline {subsection}{\numberline {2.5}Chinese Remainder Theorem}{3}%
-\contentsline {subsection}{\numberline {2.6}Rational Number Class}{3}%
-\contentsline {subsection}{\numberline {2.7}Kirchoff's Theorem}{4}%
-\contentsline {subsection}{\numberline {2.8}Lucas Theorem}{4}%
-\contentsline {subsection}{\numberline {2.9}FFT(Fast Fourier Transform)}{4}%
-\contentsline {subsection}{\numberline {2.10}NTT(Number Theoretic Transform)}{4}%
-\contentsline {subsection}{\numberline {2.11}FWHT(Fast Walsh-Hadamard Transform) and Convolution}{5}%
-\contentsline {subsection}{\numberline {2.12}Matrix Operations}{5}%
-\contentsline {subsection}{\numberline {2.13}Gaussian Elimination}{5}%
-\contentsline {subsection}{\numberline {2.14}Simplex Algorithm}{6}%
-\contentsline {subsection}{\numberline {2.15}Nim Game}{6}%
-\contentsline {subsection}{\numberline {2.16}Lifting The Exponent}{7}%
-\contentsline {section}{\numberline {3}Data Structure}{7}%
-\contentsline {subsection}{\numberline {3.1}Order statistic tree(Policy Based Data Structure)}{7}%
-\contentsline {subsection}{\numberline {3.2}Rope}{7}%
-\contentsline {subsection}{\numberline {3.3}Fenwick Tree}{7}%
-\contentsline {subsection}{\numberline {3.4}2D Fenwick Tree}{7}%
-\contentsline {subsection}{\numberline {3.5}Segment Tree with Lazy Propagation}{7}%
-\contentsline {subsection}{\numberline {3.6}Persistent Segment Tree}{8}%
-\contentsline {subsection}{\numberline {3.7}Splay Tree}{8}%
-\contentsline {subsection}{\numberline {3.8}Bitset to Set}{9}%
-\contentsline {subsection}{\numberline {3.9}Li-Chao Tree}{10}%
+\contentsline {subsection}{\numberline {2.1}Linear Sieve}{2}%
+\contentsline {subsection}{\numberline {2.2}Primality Test}{2}%
+\contentsline {subsection}{\numberline {2.3}Integer Factorization (Pollard's rho)}{3}%
+\contentsline {subsection}{\numberline {2.4}Chinese Remainder Theorem}{3}%
+\contentsline {subsection}{\numberline {2.5}Kirchoff's Theorem}{3}%
+\contentsline {subsection}{\numberline {2.6}Lucas Theorem}{3}%
+\contentsline {subsection}{\numberline {2.7}FFT(Fast Fourier Transform)}{3}%
+\contentsline {subsection}{\numberline {2.8}NTT(Number Theoretic Transform)}{4}%
+\contentsline {subsection}{\numberline {2.9}FWHT(Fast Walsh-Hadamard Transform) and Convolution}{4}%
+\contentsline {subsection}{\numberline {2.10}Matrix Operations}{4}%
+\contentsline {subsection}{\numberline {2.11}Gaussian Elimination}{5}%
+\contentsline {subsection}{\numberline {2.12}Simplex Algorithm}{5}%
+\contentsline {subsection}{\numberline {2.13}DLAS Heuristic}{6}%
+\contentsline {subsection}{\numberline {2.14}Nim Game}{6}%
+\contentsline {subsection}{\numberline {2.15}Lifting The Exponent}{6}%
+\contentsline {section}{\numberline {3}Data Structure}{6}%
+\contentsline {subsection}{\numberline {3.1}Order statistic tree(Policy Based Data Structure)}{6}%
+\contentsline {subsection}{\numberline {3.2}Hash Table}{6}%
+\contentsline {subsection}{\numberline {3.3}Rope}{7}%
+\contentsline {subsection}{\numberline {3.4}Persistent Segment Tree}{7}%
+\contentsline {subsection}{\numberline {3.5}Splay Tree}{7}%
+\contentsline {subsection}{\numberline {3.6}Bitset to Set}{8}%
+\contentsline {subsection}{\numberline {3.7}Li-Chao Tree}{9}%
+\contentsline {subsection}{\numberline {3.8}Wavelet Tree}{9}%
 \contentsline {section}{\numberline {4}DP}{10}%
-\contentsline {subsection}{\numberline {4.1}Longest Increasing Sequence}{10}%
-\contentsline {subsection}{\numberline {4.2}Convex Hull Optimization}{10}%
-\contentsline {subsection}{\numberline {4.3}Divide \& Conquer Optimization}{11}%
-\contentsline {subsection}{\numberline {4.4}Knuth Optimization}{11}%
-\contentsline {subsection}{\numberline {4.5}Bitset Optimization}{11}%
-\contentsline {subsection}{\numberline {4.6}Kitamasa \& Berlekamp-Massey}{12}%
-\contentsline {subsection}{\numberline {4.7}SOS(Subset of Sum) DP}{12}%
-\contentsline {section}{\numberline {5}Graph}{12}%
-\contentsline {subsection}{\numberline {5.1}SCC}{12}%
+\contentsline {subsection}{\numberline {4.1}Convex Hull Optimization}{10}%
+\contentsline {subsection}{\numberline {4.2}Divide \& Conquer Optimization}{10}%
+\contentsline {subsection}{\numberline {4.3}Knuth Optimization}{10}%
+\contentsline {subsection}{\numberline {4.4}Bitset Optimization}{10}%
+\contentsline {subsection}{\numberline {4.5}Kitamasa \& Berlekamp-Massey}{11}%
+\contentsline {subsection}{\numberline {4.6}SOS(Subset of Sum) DP}{11}%
+\contentsline {section}{\numberline {5}Graph}{11}%
+\contentsline {subsection}{\numberline {5.1}SCC}{11}%
 \contentsline {subsection}{\numberline {5.2}2-SAT}{12}%
 \contentsline {subsection}{\numberline {5.3}BCC, Cut vertex, Bridge}{12}%
-\contentsline {subsection}{\numberline {5.4}Block-cut Tree}{13}%
-\contentsline {subsection}{\numberline {5.5}Dijkstra}{13}%
-\contentsline {subsection}{\numberline {5.6}Shortest Path Faster Algorithm}{13}%
-\contentsline {subsection}{\numberline {5.7}Centroid Decomposition}{13}%
-\contentsline {subsection}{\numberline {5.8}Lowest Common Ancestor}{14}%
-\contentsline {subsection}{\numberline {5.9}Heavy-Light Decomposition}{14}%
-\contentsline {subsection}{\numberline {5.10}Bipartite Matching (Hopcroft-Karp)}{15}%
-\contentsline {subsection}{\numberline {5.11}Maximum Flow (Dinic)}{15}%
-\contentsline {subsection}{\numberline {5.12}Maximum Flow with Edge Demands}{16}%
-\contentsline {subsection}{\numberline {5.13}Min-cost Maximum Flow}{17}%
-\contentsline {subsection}{\numberline {5.14}General Min-cut (Stoer-Wagner)}{17}%
-\contentsline {subsection}{\numberline {5.15}Hungarian Algorithm}{18}%
-\contentsline {subsection}{\numberline {5.16}Online Dynamic Connectivity}{18}%
-\contentsline {section}{\numberline {6}Geometry}{20}%
-\contentsline {subsection}{\numberline {6.1}Basic Operations}{20}%
-\contentsline {subsection}{\numberline {6.2}Convex Hull}{21}%
-\contentsline {subsection}{\numberline {6.3}Rotating Calipers}{21}%
-\contentsline {subsection}{\numberline {6.4}Half Plane Intersection}{22}%
-\contentsline {subsection}{\numberline {6.5}Point in Polygon Test}{22}%
-\contentsline {subsection}{\numberline {6.6}Polygon Cut}{22}%
-\contentsline {subsection}{\numberline {6.7}Voronoi Diagram}{23}%
-\contentsline {subsection}{\numberline {6.8}KD-Tree}{24}%
-\contentsline {subsection}{\numberline {6.9}Pick's theorem}{24}%
+\contentsline {subsection}{\numberline {5.4}Block-cut Tree}{12}%
+\contentsline {subsection}{\numberline {5.5}Dijkstra}{12}%
+\contentsline {subsection}{\numberline {5.6}Shortest Path Faster Algorithm}{12}%
+\contentsline {subsection}{\numberline {5.7}Centroid Decomposition}{12}%
+\contentsline {subsection}{\numberline {5.8}Lowest Common Ancestor}{13}%
+\contentsline {subsection}{\numberline {5.9}Heavy-Light Decomposition}{13}%
+\contentsline {subsection}{\numberline {5.10}Hall's Theorem}{14}%
+\contentsline {subsection}{\numberline {5.11}Stable Marriage}{14}%
+\contentsline {subsection}{\numberline {5.12}Bipartite Matching (Hopcroft-Karp)}{14}%
+\contentsline {subsection}{\numberline {5.13}Maximum Flow (Dinic)}{15}%
+\contentsline {subsection}{\numberline {5.14}Maximum Flow with Edge Demands}{15}%
+\contentsline {subsection}{\numberline {5.15}Min-cost Maximum Flow}{16}%
+\contentsline {subsection}{\numberline {5.16}General Min-cut (Stoer-Wagner)}{17}%
+\contentsline {subsection}{\numberline {5.17}Hungarian Algorithm}{17}%
+\contentsline {subsection}{\numberline {5.18}General Unweighted Maximum Matching(Tutte)}{18}%
+\contentsline {subsection}{\numberline {5.19}General Weighted Maximum Matching(Blossom)}{18}%
+\contentsline {section}{\numberline {6}Geometry}{19}%
+\contentsline {subsection}{\numberline {6.1}Basic Operations}{19}%
+\contentsline {subsection}{\numberline {6.2}Convex Hull \& Rotating Calipers}{20}%
+\contentsline {subsection}{\numberline {6.3}Half Plane Intersection}{21}%
+\contentsline {subsection}{\numberline {6.4}Minimum Permimeter Triangle}{21}%
+\contentsline {subsection}{\numberline {6.5}Minimum Enclosing Circle}{21}%
+\contentsline {subsection}{\numberline {6.6}Point in Polygon Test}{21}%
+\contentsline {subsection}{\numberline {6.7}Polygon Cut}{21}%
+\contentsline {subsection}{\numberline {6.8}Number of Point in Triangle}{22}%
+\contentsline {subsection}{\numberline {6.9}Voronoi Diagram}{23}%
+\contentsline {subsection}{\numberline {6.10}KD-Tree}{24}%
+\contentsline {subsection}{\numberline {6.11}Pick's theorem}{24}%
 \contentsline {section}{\numberline {7}String}{24}%
 \contentsline {subsection}{\numberline {7.1}KMP}{24}%
 \contentsline {subsection}{\numberline {7.2}Z Algorithm}{24}%
 \contentsline {subsection}{\numberline {7.3}Aho-Corasick}{25}%
 \contentsline {subsection}{\numberline {7.4}Suffix Array with LCP}{25}%
 \contentsline {subsection}{\numberline {7.5}Manacher's Algorithm}{25}%
+\contentsline {subsection}{\numberline {7.6}EERTREE}{25}%

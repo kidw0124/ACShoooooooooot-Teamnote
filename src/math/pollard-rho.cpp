@@ -1,36 +1,21 @@
-ll pollard_rho(ll n) {
-    random_device rd;
-    mt19937 gen(rd());
-    uniform_int_distribution<ll> dis(1, n - 1);
-    ll x = dis(gen);
-    ll y = x;
-    ll c = dis(gen);
-    ll g = 1;
-    while (g == 1) {
-        x = (modmul(x, x, n) + c) % n;
-        y = (modmul(y, y, n) + c) % n;
-        y = (modmul(y, y, n) + c) % n;
-        g = gcd(abs(x - y), n);
-    }
-    return g;
+ll pollard(ll n) {
+  auto f = [n](ll x) { return modadd(modmul(x, x, n), 3, n); };
+  ll x = 0, y = 0, t = 30, p = 2, i = 1, q;
+  while (t++ % 40 || gcd(p, n) == 1) {
+    if (x == y) x = ++i, y = f(x);
+    if (q = modmul(p, abs(x - y), n)) p = q;
+    x = f(x), y = f(f(y));
+  }
+  return gcd(p, n);
 }
-
 // integer factorization
 // O(n^0.25 * logn)
-void factorize(ll n, vector<ll>& fl) {
-    if (n == 1) {
-        return;
-    }
-    if (n % 2 == 0) {
-        fl.push_back(2);
-        factorize(n / 2, fl);
-    }
-    else if (is_prime(n)) {
-        fl.push_back(n);
-    }
-    else {
-        ll f = pollard_rho(n);
-        factorize(f, fl);
-        factorize(n / f, fl);
-    }
+vector<ll> factor(ll n) {
+  if (n == 1) return {};
+  if (is_prime(n)) return { n };
+  ll x = pollard(n);
+  auto l = factor(x), r = factor(n / x);
+  l.insert(l.end(), r.begin(), r.end());
+  sort(l.begin(), l.end());
+  return l;
 }

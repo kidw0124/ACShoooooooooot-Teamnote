@@ -1,10 +1,11 @@
-template<class S = std::string,
-     class T = typename S::value_type>
+template<class S = string , class T = typename S::value_type>
 struct eertree {
   struct node {
-    int len, link;
-    map<T, int> child;
+    int len, link;map<T, int> child;
   };
+  S s;
+  vector<node> data;
+  int max_suf;
   eertree() : max_suf(1) {
     data.push_back({ -1, 0 });
     data.push_back({ 0, 0 });
@@ -28,8 +29,4 @@ struct eertree {
     i = data[i].child[c];
     max_suf = i;
   }
-private:
-  S s;
-  vector<node> data;
-  int max_suf;
 };

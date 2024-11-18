@@ -1,51 +1,68 @@
-#include<bits/stdc++.h>
 #pragma GCC optimize ("O3,unroll-loops")
 #pragma GCC target ("avx,avx2,fma")
-using namespace std;
-using ll=long long;
-using ull=unsigned long long;
-using LL=__int128_t;
-using ULL=__uint128_t;
-using ld=long double;
-using pll = pair<ll,ll>;
-
-#ifdef kidw0124
-constexpr bool ddebug = true;
-#else
-constexpr bool ddebug = false;
-#endif
-
-#define debug if(ddebug)cout<<"[DEBUG] "
-#define debugv(x) if(ddebug)cout<<"[DEBUG] "<<#x<<" = "<<x<<'\n'
-#define debugc(x) if(ddebug)cout<<"[DEBUG] "<<#x<<" = [";for(auto i:x)cout<<i<<' ';cout<<"]\n"
-#define all(v) (v).begin(),(v).end()
-
-ll gcd(ll a, ll b){return b?gcd(b,a%b):a;}
-ll lcm(ll a, ll b){if(a&&b)return a*(b/gcd(a,b)); return a+b;}
-ll powm(ll a, ll b, ll m){ll p=1;for(;b;b/=2,a=(a*a)%m)if(b&1)p=(p*a)%m;return p;}
-
-void setup(){
-  if(ddebug){
-    freopen("input.txt","r",stdin);
-    freopen("output.txt","w",stdout);
-  }else{
-    ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define debug(...) __dbg(#__VA_ARGS__, __VA_ARGS__)
+template<typename T>
+ostream& operator<<(ostream& out, vector<T> v) {
+  string _;
+  out << '(';
+  for (T x : v) cout << _ << x, _ = " ";
+  out << ')';
+  return out;
+}
+void __dbg(string s, auto... x) {
+  string _;
+  cout << '(' << s << ") : ";
+  (..., (cout << _ << x, _ = ", "));
+  cout << '\n';
+}
+auto gen_tree = [](int n) {
+  auto prufer_decode = [](const vector<int>& v) {
+    const int n = v.size() + 2;
+    vector deg(n + 1, 1);
+    for (int i : v) deg[i]++;
+    int p = 1, leaf = 1;
+    while (deg[p] != 1) p++, leaf++;
+    vector res(0, pair(0, 0));
+    for (int i : v) {
+      res.push_back({ leaf, i });
+      if (--deg[i] == 1 && i < p) leaf = i;
+      else { do p++; while (deg[p] != 1); leaf = p; }
+    }
+    res.push_back({ leaf, n });
+    return res;
+  };
+  vector v(n - 2, 0);
+  for (int& i : v) i = gen_rand(1, n);
+  return prufer_decode(v);
+};
+auto vectors(const int n, auto&& val) {
+  return vector(n, val);
+}
+auto vectors(const int n, auto&&... args) {
+  return vector(n, vectors(args...));
+}
+struct query { // mo's algorithm
+  int l, r, i;
+  bool operator< (const query& x) {
+  if ((l ^ x.l) >> 9) return l < x.l;
+    return l >> 9 & 1 ^ r < x.r;
   }
+};
+uint32_t xorshift32(uint32_t x) {
+    x ^= x << 13;
+    x ^= x >> 17;
+    x ^= x << 5;
+    return x;
 }
-
-void preprocess(){
+uint64_t xorshift64(uint64_t x) {
+    x ^= x << 13;
+    x ^= x >> 7;
+    x ^= x << 17;
+    return x;
 }
-
-void solve(ll testcase){
-  ll i,j,k;
-}
-
-int main(){
-  ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
-  setup();
-  preprocess();
-  ll t=1;
-  // cin>>t;
-  for(ll i=1;i<=t;i++)solve(i);
-  return 0;
+uint64_t splitmix64(uint64_t x) {
+    x += 0x9e3779b97f4a7c15;
+    x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;
+    x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
+    return x ^ (x >> 31);
 }

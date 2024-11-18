@@ -1,21 +1,11 @@
 // Z[i] : maximum common prefix length of &s[0] and &s[i] with O(|s|)
-using seq_t = string;
-vector<int> z_func(const seq_t &s) {
-    vector<int> z(s.size());
-    z[0] = s.size();
-    int l = 0, r = 0;
-    for (int i = 1; i < s.size(); i++) {
-        if (i > r) {
-            int j;
-            for(j=0;i+j<s.size()&&s[i+j]==s[j];j++);
-            z[i] = j; l = i; r = i + j - 1;
-        } else if(z[i-l]<r-i+1) {
-            z[i]=z[i-l];
-        } else {
-            int j;
-            for(j=1;r+j<s.size()&&s[r+j]==s[r-i+j];j++);
-            z[i] = r - i + j; l = i; r += j - 1;
-        }
-    }
-    return z;
-}
+auto get_z = [](const string& s) {
+  const int n = s.size();
+  vector z(n, 0); z[0] = n;
+  for (int i = 1, l = -1, r = -1; i < n; i++) {
+  if (i <= r) z[i] = min(r - i + 1, z[i - l]);
+    while (i + z[i] < n && s[z[i]] == s[i + z[i]]) z[i]++;
+    if (r < i + z[i] - 1) l = i, r = i + z[i] - 1;
+  }
+  return z;
+};

@@ -1,44 +1,33 @@
 // calculates suffix array with O(n*logn)
-vector<int> suffix_array(const vector<char>& in) {
-    int n = (int)in.size(), c = 0;
-    vector<int> temp(n), pos2bckt(n), bckt(n), bpos(n), out(n);
-    for (int i = 0; i < n; i++) out[i] = i;
-    sort(out.begin(), out.end(), [&](int a, int b) { return in[a] < in[b]; });
-    for (int i = 0; i < n; i++) {
-        bckt[i] = c;
-        if (i + 1 == n || in[out[i]] != in[out[i + 1]]) c++;
+auto get_sa(const string& s) {
+    const int n = s.size(), m = max(256, n) + 1;
+    vector<int> sa(n), r(n << 1), nr(n << 1), cnt(m), idx(n);
+    for (int i = 0; i < n; i++) sa[i] = i, r[i] = s[i];
+    for (int d = 1; d < n; d <<= 1) {
+        auto cmp = [&](int a, int b) { return r[a] < r[b] || r[a] == r[b] && r[a + d] < r[b + d]; };
+        for (int i = 0; i < m; ++i) cnt[i] = 0;
+        for (int i = 0; i < n; ++i) cnt[r[i + d]]++;
+        for (int i = 1; i < m; ++i) cnt[i] += cnt[i - 1];
+        for (int i = n - 1; ~i; --i) idx[--cnt[r[i + d]]] = i;
+        for (int i = 0; i < m; ++i) cnt[i] = 0;
+        for (int i = 0; i < n; ++i) cnt[r[i]]++;
+        for (int i = 1; i < m; ++i) cnt[i] += cnt[i - 1];
+        for (int i = n - 1; ~i; --i) sa[--cnt[r[idx[i]]]] = idx[i];
+        nr[sa[0]] = 1;
+        for (int i = 1; i < n; ++i) nr[sa[i]] = nr[sa[i - 1]] + cmp(sa[i - 1], sa[i]);
+        for (int i = 0; i < n; ++i) r[i] = nr[i];
+        if (r[sa[n - 1]] == n) break; 
     }
-    for (int h = 1; h < n && c < n; h <<= 1) {
-        for (int i = 0; i < n; i++) pos2bckt[out[i]] = bckt[i];
-        for (int i = n - 1; i >= 0; i--) bpos[bckt[i]] = i;
-        for (int i = 0; i < n; i++)
-            if (out[i] >= n - h) temp[bpos[bckt[i]]++] = out[i];
-        for (int i = 0; i < n; i++)
-            if (out[i] >= h) temp[bpos[pos2bckt[out[i] - h]]++] = out[i] - h;
-        c = 0;
-        for (int i = 0; i + 1 < n; i++) {
-            int a = (bckt[i] != bckt[i + 1]) || (temp[i] >= n - h)
-                    || (pos2bckt[temp[i + 1] + h] != pos2bckt[temp[i] + h]);
-            bckt[i] = c;
-            c += a;
-        }
-        bckt[n - 1] = c++;
-        temp.swap(out);
-    }
-    return out;
+    return sa;
 }
 // calculates lcp array. it needs suffix array & original sequence with O(n)
-vector<int> lcp(const vector<char>& in, const vector<int>& sa) {
-    int n = (int)in.size();
-    if (n == 0) return vector<int>();
-    vector<int> rank(n), height(n - 1);
-    for (int i = 0; i < n; i++) rank[sa[i]] = i;
-    for (int i = 0, h = 0; i < n; i++) {
-        if (rank[i] == 0) continue;
-        int j = sa[rank[i] - 1];
-        while (i + h < n && j + h < n && in[i + h] == in[j + h]) h++;
-        height[rank[i] - 1] = h;
-        if (h > 0) h--;
-    }
-    return height;
+auto get_lcp(const string& s, const auto& sa) {
+  const int n = s.size();
+  vector lcp(n - 1, 0), isa(n, 0);
+  for (int i = 0; i < n; i++) isa[sa[i]] = i;
+  for (int i = 0, k = 0; i < n; i++) if (isa[i]) {
+    for (int j = sa[isa[i] - 1]; s[i + k] == s[j + k]; k++);
+    lcp[isa[i] - 1] = k ? k-- : 0;
+  }
+  return lcp;
 }

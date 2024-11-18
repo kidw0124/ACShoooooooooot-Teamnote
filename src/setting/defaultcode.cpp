@@ -66,3 +66,4 @@ uint64_t splitmix64(uint64_t x) {
     x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
     return x ^ (x >> 31);
 }
+arr.reserve(n) // 공간 미리 할당 + push_back 사용

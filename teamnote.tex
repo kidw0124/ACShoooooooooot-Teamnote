@@ -77,8 +77,8 @@
 
 \section{Math}
 
-\subsection{Basic Arithmetic}
-\lstinputlisting[style=mycpp]{src/math/basic-arithmetic.cpp}
+% \subsection{Basic Arithmetic}
+% \lstinputlisting[style=mycpp]{src/math/basic-arithmetic.cpp}
 
 \subsection{Linear Sieve}
 \lstinputlisting[style=mycpp]{src/math/linear-sieve.cpp}
@@ -104,8 +104,8 @@
 % 모순이 생기지 않았을 때 답을 구하려면 
 % CRT로 합칠 때 $x \equiv x_2 \pmod{p^{k_2}}$만을 남기고 합쳐주면 된다.
 
-\subsection{Rational Number Class}
-\lstinputlisting[style=mycpp]{src/math/rational.cpp}
+% \subsection{Rational Number Class}
+% \lstinputlisting[style=mycpp]{src/math/rational.cpp}
 
 % \subsection{Catalan, Derangement, Partition, 2nd Stirling}
 % $C_n = \frac{1}{n + 1} \binom{2n}{n}, C_0 = 1, C_{n + 1} = \sum_{i=0}^{n} C_i C_{n-i},  C_{n + 1} = \frac{2(2n+1)}{n+2} C_n$
@@ -164,6 +164,9 @@ $1\,012\,924\,417 = 483 \times 2^{21} + 1$. Primitive root: $5$.
 \subsection{Simplex Algorithm}
 \lstinputlisting[style=mycpp]{src/math/simplex.cpp}
 
+\subsection{DLAS Heuristic}
+\lstinputlisting[style=mycpp]{src/math/dlas.cpp}
+
 \subsection{Nim Game}
 
 Nim Game의 해법 : 모두 XOR했을 때 $0$이 아니면 첫번째, $0$이면 두번째 플레이어가 승리.
@@ -217,17 +220,20 @@ For any integers $x$, $y$ a positive integer $n$, and a prime number $p$ such th
 \subsection{Order statistic tree(Policy Based Data Structure)}
 \lstinputlisting[style=mycpp]{src/data-structure/order-statistic-tree.cpp}
 
+\subsection{Hash Table}
+\lstinputlisting[style=mycpp]{src/data-structure/hash-table.cpp}
+
 \subsection{Rope}
 \lstinputlisting[style=mycpp]{src/data-structure/rope.cpp}
 
-\subsection{Fenwick Tree}
-\lstinputlisting[style=mycpp]{src/data-structure/fenwick-tree.cpp}
+% \subsection{Fenwick Tree}
+% \lstinputlisting[style=mycpp]{src/data-structure/fenwick-tree.cpp}
 
-\subsection{2D Fenwick Tree}
-\lstinputlisting[style=mycpp]{src/data-structure/2d-fenwick-tree.cpp}
+% \subsection{2D Fenwick Tree}
+% \lstinputlisting[style=mycpp]{src/data-structure/2d-fenwick-tree.cpp}
 
-\subsection{Segment Tree with Lazy Propagation}
-\lstinputlisting[style=mycpp]{src/data-structure/segtree-lazyprop.cpp}
+% \subsection{Segment Tree with Lazy Propagation}
+% \lstinputlisting[style=mycpp]{src/data-structure/segtree-lazyprop.cpp}
 
 % \subsection{금광 Segment Tree}
 % \lstinputlisting[style=mycpp]{src/data-structure/goldenmine-segment.cpp}
@@ -244,9 +250,12 @@ For any integers $x$, $y$ a positive integer $n$, and a prime number $p$ such th
 \subsection{Li-Chao Tree}
 \lstinputlisting[style=mycpp]{src/data-structure/lichao-tree.cpp}
 
+\subsection{Wavelet Tree}
+\lstinputlisting[style=mycpp]{src/data-structure/wavelet.cpp}
+
 \section{DP}
-\subsection{Longest Increasing Sequence}
-\lstinputlisting[style=mycpp]{src/dp/lis.cpp}
+% \subsection{Longest Increasing Sequence}
+% \lstinputlisting[style=mycpp]{src/dp/lis.cpp}
 
 \subsection{Convex Hull Optimization}
 $O(n^{2}) \to O(n\log{n})$
@@ -354,6 +363,22 @@ boolean variable $b_{i}$ 마다 $b_{i}$를 나타내는 정점, $\neg b_{i} $를
 \subsection{Heavy-Light Decomposition}
 \lstinputlisting[style=mycpp]{src/graph/hld.cpp}
 
+\subsection{Hall's Theorem}
+\begin{itemize}
+    \item
+    Let $G=\left(L\cup R,E\right)$ be a bipartite graph.
+    For $S\subseteq L$, let $N\left(S\right)\subseteq R$ be the set of vertices adjacent to some vertex in $S$.
+    Then, $\exists M \text{ matching in } G \text{ that covers all vertex of } L \Leftrightarrow \forall S\subseteq L, |S|\leq |N(S)|$
+
+    \item Hall's Theorem is equivalent to the following statement:
+    Let $S=\left\{ S_1,S_2,\ldots,S_n \right\}$ be a set of sets.
+    Then, we can choose $x_i\in S_i$ for all $i$ such that $x_i\neq x_j$ for all $i\neq j$
+    iff. $\forall T\subseteq \left\{ 1,2,\ldots,n \right\}, \left| \bigcup_{i\in T} S_i \right|\geq |T|$.
+\end{itemize}
+
+\subsection{Stable Marriage}
+\lstinputlisting[style=mycpp]{src/graph/stable-marriage.cpp}
+
 \subsection{Bipartite Matching (Hopcroft-Karp)}
 \lstinputlisting[style=mycpp]{src/graph/bipartite-matching-hopcroft.cpp}
 
@@ -395,28 +420,48 @@ D = \sum_{(u \to v) \in E} d(u \to v)
 \subsection{Hungarian Algorithm}
 \lstinputlisting[style=mycpp]{src/graph/hungarian.cpp}
 
-\subsection{Online Dynamic Connectivity}
-\lstinputlisting[style=mycpp]{src/graph/OnlineDC.cpp}
+\subsection{General Unweighted Maximum Matching(Tutte)}
+그래프 $G=(V,E)$에 대해 랜덤한 소수 $p$를 골라 다음과 같은 $|V| \times |V|$행렬 $T$를 만들자. 이 때 $r_{i,j}$는 $[1,p-1]$사이의 랜덤한 정수이다.
+최대 매칭의 크기는 높은 확률로 $rank(T)/2$이다.
+
+$T_{i,j} = \begin{cases} r_{i,j} & \text{if } (i,j) \in E \land i < j
+    \\ r_{j,i} & \text{if } (i,j) \in E \text{ and } i > j
+    \\ 0 & \text{otherwise} \end{cases}$
+
+\subsection{General Weighted Maximum Matching(Blossom)}
+\lstinputlisting[style=mycpp]{src/graph/general-mathching-dense-weighted.cpp}
+
+% \subsection{Online Dynamic Connectivity}
+% \lstinputlisting[style=mycpp]{src/graph/OnlineDC.cpp}
 
 \section{Geometry}
 
 \subsection{Basic Operations}
 \lstinputlisting[style=mycpp]{src/geometry/basic-operations.cpp}
 
-\subsection{Convex Hull}
-\lstinputlisting[style=mycpp]{src/geometry/convex-hull.cpp}
+% \subsection{Convex Hull}
+% \lstinputlisting[style=mycpp]{src/geometry/convex-hull.cpp}
 
-\subsection{Rotating Calipers}
+\subsection{Convex Hull \& Rotating Calipers}
 \lstinputlisting[style=mycpp]{src/geometry/rotating-calipers.cpp}
 
 \subsection{Half Plane Intersection}
 \lstinputlisting[style=mycpp]{src/geometry/half-plane-intersection.cpp}
+
+\subsection{Minimum Permimeter Triangle}
+\lstinputlisting[style=mycpp]{src/geometry/minimum-perimeter-triangle.cpp}
+
+\subsection{Minimum Enclosing Circle}
+\lstinputlisting[style=mycpp]{src/geometry/minimum-enclosing-circle.cpp}
 
 \subsection{Point in Polygon Test}
 \lstinputlisting[style=mycpp]{src/geometry/point-in-polygon.cpp}
 
 \subsection{Polygon Cut}
 \lstinputlisting[style=mycpp]{src/geometry/polygon-cut.cpp}
+
+\subsection{Number of Point in Triangle}
+\lstinputlisting[style=mycpp]{src/geometry/point-in-triangle.cpp}
 
 \subsection{Voronoi Diagram}
 \lstinputlisting[style=mycpp]{src/geometry/voronoi.cpp}
@@ -444,5 +489,8 @@ D = \sum_{(u \to v) \in E} d(u \to v)
 
 \subsection{Manacher's Algorithm}
 \lstinputlisting[style=mycpp]{src/string/manacher.cpp}
+
+\subsection{EERTREE}
+\lstinputlisting[style=mycpp]{src/string/eertree.cpp}
 
 \end{document}

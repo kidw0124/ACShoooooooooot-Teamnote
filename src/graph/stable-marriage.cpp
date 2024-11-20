@@ -1,29 +1,22 @@
-// O(n^2) stable marriage 1-based index
-// a[i][j] : i번째 그룹의 j번째 원소가 선호하는 두 번째 그룹의 원소
-// b[i][j] : 두 번째 그룹의 i번째 원소가 선호하는 첫 번째 그룹의 원소
-// x[i] : 첫 번째 그룹의 i번째 원소가 매칭된 두 번째 그룹의 원소
-// y[i] : 두 번째 그룹의 i번째 원소가 매칭된 첫 번째 그룹의 원소
-void matching(vector<vector<int>> &a, vector<vector<int>> &b, vector<int> &x, vector<int> &y) {
-    int k, n = a.size() - 1;
-    vector<int> p(n + 1);
-    for(int i = 1; i <= n; i++) x[i] = y[i] = p[i] = 0;
-    for(int t = 1; t <= n; t++) {
-        for(int i = 1; i <= n; i++){
-            if(x[i])continue;
-            for(; ++p[i]; ){
-                int w = a[i][p[i]];
-                if(!y[w]){
-                    x[i] = w;
-                    y[w] = i;
-                    break;
-                }
-                if(b[w][i] < b[w][y[w]]){
-                    x[i] = w;
-                    x[y[w]] = 0;
-                    y[w] = i;
-                    break;
-                }
-            }
+// man : 1~n, woman : n+1~2n, O(n^2) stable marriage
+struct StableMarriage{
+  int n; vector<vector<int>> g;
+  StableMarriage(int n) : n(n), g(2*n+1) { for(int i=1; i<=n+n; i++) g[i].reserve(n); }
+  void addEdge(int u, int v){  g[u].push_back(v); } // insert in decreasing order of preference.
+  vector<int> run(){
+    queue<int> q; vector<int> match(2*n+1), ptr(2*n+1);
+    for(int i=1; i<=n; i++) q.push(i);
+    while(q.size()){
+      int i = q.front(); q.pop();
+      for(int &p=ptr[i]; p<g[i].size(); p++){
+        int j = g[i][p];
+        if(!match[j]){ match[i] = j; match[j] = i; break; }
+        int m = match[j], u = -1, v = -1;
+        for(int k=0; k<g[j].size(); k++){
+          if(g[j][k] == i) u = k; if(g[j][k] == m) v = k;
         }
-    }
-}
+        if(u < v){
+          match[m] = 0; q.push(m); match[i] = j; match[j] = i; break;
+    } /*if u < v*/ } /*for-p*/ } /*while*/
+    return match; } /*vector<int> run*/
+};

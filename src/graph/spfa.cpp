@@ -1,6 +1,5 @@
 // shortest path faster algorithm
 // average for random graph : O(E) , worst : O(VE)
-
 const int MAXN = 20001;
 const int INF = 100000000;
 int n, m;

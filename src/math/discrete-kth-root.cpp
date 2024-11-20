@@ -9,6 +9,7 @@ ll base, ae[X], aXe[X], iaXe[X];
 unordered_map<ll, ll> ht;
 #define FOR(i, c) for (int i = 0; i < (c); ++i)
 #define REP(i, l, r) for (int i = (l); i <= (r); ++i)
+// discrete log : O(sqrt(Q))
 void build(ll a) { // ord(a) = P < sqrt(Q)
   base = a;
   ht.clear();

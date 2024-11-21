@@ -1,5 +1,5 @@
 auto sol_p_e = [](int q, const auto& qs, const int p, const int e, const int mod) {
-	// qs[i] = {n, r}, nCr mod p^e in O(p^e)
+  // qs[i] = {n, r}, nCr mod p^e in O(p^e)
   vector dp(mod, 1);
   for (int i = 0; i < mod; i++) {
     if (i) dp[i] = dp[i - 1];

@@ -134,11 +134,9 @@
 
 \subsection{Kirchoff's Theorem}
 
-그래프의 스패닝 트리의 개수를 구하는 정리.
-
-무향 그래프의 Laplacian matrix $L$를 만든다. 이것은 (정점의 차수 대각 행렬) - (인접행렬)이다.
+무향 그래프의 Laplacian matrix $L$ : (정점의 차수 대각 행렬) - (인접행렬)이다.
 $L$에서 행과 열을 하나씩 제거한 것을 $L'$라 하자. 어느 행/열이든 관계 없다.
-그래프의 스패닝 트리의 개수는 $det(L')$이다.
+그래프의 스패닝 트리의 개수는 $det(L')$
 
 \subsection{Lucas Theorem}
 \lstinputlisting[style=mycpp]{src/math/lucas-theorem.cpp}
@@ -342,8 +340,8 @@ boolean variable $b_{i}$ 마다 $b_{i}$를 나타내는 정점, $\neg b_{i} $를
 
 각 BCC 및 cut vertex가 block-cut tree의 vertex가 되며, BCC와 그 BCC에 속한 cut vertex 사이에 edge를 이어주면 된다.
 
-\subsection{Dijkstra}
-\lstinputlisting[style=mycpp]{src/graph/dijkstra.cpp}
+% \subsection{Dijkstra}
+% \lstinputlisting[style=mycpp]{src/graph/dijkstra.cpp}
 
 % \subsection{Bellman-Ford Algorithm}
 % \lstinputlisting[style=mycpp]{src/graph/bellman.cpp}
@@ -388,8 +386,8 @@ boolean variable $b_{i}$ 마다 $b_{i}$를 나타내는 정점, $\neg b_{i} $를
 \subsection{Bipartite Matching (Kuhn)}
 \lstinputlisting[style=mycpp]{src/graph/bipartite-matching-khun.cpp}
 
-\subsection{Bipartite Matching (Hopcroft-Karp)}
-\lstinputlisting[style=mycpp]{src/graph/bipartite-matching-hopcroft.cpp}
+% \subsection{Bipartite Matching (Hopcroft-Karp)}
+% \lstinputlisting[style=mycpp]{src/graph/bipartite-matching-hopcroft.cpp}
 
 \subsection{Maximum Flow (Dinic)}
 \lstinputlisting[style=mycpp]{src/graph/maxflow-dinic.cpp}

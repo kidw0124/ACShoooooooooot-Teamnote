@@ -38,56 +38,55 @@ auto crt = [](auto r, auto m) {
   return pair(r0, m0);
 };
 auto sol_p_e = [](int q, const auto& qs, const int p, const int e, const int mod) {
-  auto mul = [&](int a, int b) -> int { return 1LL * a * b % mod; };
-  auto pow = [&](int x, int n) {
-    int ret = 1;
-    for (; n; n >>= 1) { if (n & 1) ret = mul(ret, x); x = mul(x, x); }
-    return ret;
-  };
-  vector dp(mod, 1);
-  for (int i = 0; i < mod; i++) {
-    if (i) dp[i] = dp[i - 1];
-    if (i % p == 0) continue;
-    dp[i] = mul(dp[i], i);
-  }
-  auto f = [&](i64 n) {
-    int a = 0, b = 1;
-    while (n) {
-      i64 q = n / mod, r = n % mod;
-      a += q, b = mul(b, dp[r]);
-      if (q & 1) b = mul(b, dp[mod - 1]);
-      n = q;
-    }
-    return pair(a, b);
-  };
-  auto bino = [&](i64 n, i64 r) {
-    if (n < r) return 0;
-    if (r == 0 || r == n) return 1;
-    auto [a1, b1] = f(n);
-    auto [a2, b2] = f(r);
-    auto [a3, b3] = f(n - r);
-    int a = a1 - a2 - a3;
-    int b = mul(b1, minv(mul(b2, b3), mod));
-    return mul(pow(p, a), b);
-  };
-  vector res(q, 0);
-  for (int i = 0; i < q; i++) {
-    auto [n, r] = qs[i];
-    res[i] = bino(n, r);
-  }
-  return res;
+	auto mul = [&](int a, int b) -> int { return 1LL * a * b % mod; };
+	auto pow = [&](int x, i64 n) {
+		int ret = 1;
+		for (; n; n >>= 1) { if (n & 1) ret = mul(ret, x); x = mul(x, x); }
+		return ret;
+	};
+	vector dp(mod, 1);
+	for (int i = 0; i < mod; i++) {
+		if (i) dp[i] = dp[i - 1];
+		if (i % p == 0) continue;
+		dp[i] = mul(dp[i], i);
+	}
+	auto f = [&](i64 n) {
+		i64 res = 0;
+		while (n /= p) res += n;
+		return res;
+	};
+	auto g = [&](i64 n) {
+		int b = 1;
+		while (n) {
+			i64 q = n / mod, r = n % mod;
+			b = mul(b, dp[r]);
+			if (q & 1) b = mul(b, dp[mod - 1]);
+			n = q;
+		}
+		return b;
+	};
+	auto bino = [&](i64 n, i64 r) {
+		if (n < r) return 0;
+		if (r == 0 || r == n) return 1;
+		i64 a = f(n) - f(r) - f(n - r);
+		int b = mul(g(n), minv(mul(g(r), g(n - r)), mod));
+		return mul(pow(p, a), b);
+	};
+	vector res(q, 0);
+	for (int i = 0; i < q; i++) { auto [n, r] = qs[i]; res[i] = bino(n, r); }
+	return res;
 };
 auto sol = [](int q, const auto& qs, const int mod) {
-  vector fac = factor(mod);
-  vector r(q, vector(fac.size(), 0));
-  vector m(fac.size(), 1);
-  for (int i = 0; i < fac.size(); i++) {
-    auto [p, e] = fac[i];
-    for (int j = 0; j < e; j++) m[i] *= p;
-    auto res = sol_p_e(q, qs, p, e, m[i]);
-    for (int j = 0; j < q; j++) r[j][i] = res[j];
-  }
-  vector res(q, 0);
-  for (int i = 0; i < q; i++) res[i] = crt(r[i], m).first;
-  return res;
+	vector fac = factor(mod);
+	vector r(q, vector(fac.size(), 0));
+	vector m(fac.size(), 1);
+	for (int i = 0; i < fac.size(); i++) {
+		auto [p, e] = fac[i];
+		for (int j = 0; j < e; j++) m[i] *= p;
+		auto res = sol_p_e(q, qs, p, e, m[i]);
+		for (int j = 0; j < q; j++) r[j][i] = res[j];
+	}
+	vector res(q, 0);
+	for (int i = 0; i < q; i++) res[i] = crt(r[i], m).first;
+	return res;
 };

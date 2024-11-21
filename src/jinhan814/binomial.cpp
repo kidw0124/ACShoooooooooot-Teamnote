@@ -53,9 +53,10 @@ auto sol_p_e = [](int q, const auto& qs, const int p, const int e, const int mod
   auto f = [&](i64 n) {
     int a = 0, b = 1;
     while (n) {
-      int q = n / mod, r = n % mod;
+      i64 q = n / mod, r = n % mod;
       a += q, b = mul(b, dp[r]);
       if (q & 1) b = mul(b, dp[mod - 1]);
+      n = q;
     }
     return pair(a, b);
   };

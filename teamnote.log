@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2023.10.21)  22 NOV 2024 05:52
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2023.10.21)  22 NOV 2024 07:12
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -622,18 +622,21 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 )
 (./src/data-structure/bitset-to-set.cpp [9])
 (./src/data-structure/lichao-tree.cpp) (./src/data-structure/wavelet.cpp
-[10]) (./src/dp/convex-hull-trick-linear.cpp) (./src/dp/dnc-optimization.cpp)
+Underfull \vbox (badness 2326) has occurred while \output is active []
+
+ [10])
+(./src/dp/convex-hull-trick-linear.cpp) (./src/dp/dnc-optimization.cpp)
 (./src/dp/knuth-optimization.cpp) (./src/dp/bitset.cpp [11])
 (./src/dp/Kitamasa.cpp) (./src/dp/Berlekamp-Massey.cpp) (./src/dp/sosdp.cpp)
 (./src/graph/scc.cpp [12]) (./src/graph/bcc.cpp) (./src/graph/spfa.cpp)
 (./src/graph/centroid-decomposition.cpp [13]) (./src/graph/lca.cpp)
-(./src/graph/hld.cpp) (./src/graph/stable-marriage.cpp [14])
+(./src/graph/hld.cpp) (./src/graph/stable-marriage.cpp) [14]
 (./src/graph/bipartite-matching-khun.cpp) (./src/graph/maxflow-dinic.cpp)
 (./src/graph/maxflow-ed.cpp [15]) (./src/graph/mcmf.cpp)
-(./src/graph/general-mincut-stoer-wagner.cpp [16]
+(./src/graph/general-mincut-stoer-wagner.cpp [16])
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-)
+
 (./src/graph/hungarian.cpp) (./src/graph/general-mathching-dense-weighted.cpp
 [17]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -641,34 +644,35 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [18]
+ [18])
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+(./src/graph/OfflineDC.cpp) (./src/geometry/basic-operations.cpp [19]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 )
-(./src/geometry/basic-operations.cpp [19]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-)
-(./src/geometry/rotating-calipers.cpp)
-(./src/geometry/half-plane-intersection.cpp [20])
+(./src/geometry/rotating-calipers.cpp [20])
+(./src/geometry/half-plane-intersection.cpp)
 (./src/geometry/minimum-perimeter-triangle.cpp)
 (./src/geometry/minimum-enclosing-circle.cpp)
-(./src/geometry/point-in-polygon.cpp) (./src/geometry/polygon-cut.cpp [21])
-(./src/geometry/point-in-triangle.cpp) (./src/geometry/voronoi.cpp [22]
+(./src/geometry/point-in-polygon.cpp [21]) (./src/geometry/polygon-cut.cpp)
+(./src/geometry/point-in-triangle.cpp
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-)
+ [22])
+(./src/geometry/voronoi.cpp
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [23]
-(./src/geometry/kd-tree.cpp) (./src/string/kmp.cpp) (./src/string/z.cpp)
-(./src/string/aho-corasick.cpp [24]) (./src/string/suffix-array-lcp.cpp)
+ [23])
+(./src/geometry/kd-tree.cpp) (./src/string/kmp.cpp [24]) (./src/string/z.cpp)
+(./src/string/aho-corasick.cpp) (./src/string/suffix-array-lcp.cpp)
 (./src/string/manacher.cpp) (./src/string/eertree.cpp) [25] (./teamnote.aux) ) 
 Here is how much of TeX's memory you used:
- 13495 strings out of 481370
- 229913 string characters out of 5926566
- 1274891 words of memory out of 5000000
- 30129 multiletter control sequences out of 15000+600000
+ 13527 strings out of 481370
+ 230247 string characters out of 5926566
+ 1274919 words of memory out of 5000000
+ 30158 multiletter control sequences out of 15000+600000
  537411 words of font info for 78 fonts, out of 8000000 for 9000
  264 hyphenation exceptions out of 8191
  46i,12n,78p,1197b,2559s stack positions out of 5000i,500n,10000p,200000b,80000s

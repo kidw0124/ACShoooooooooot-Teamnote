@@ -22,8 +22,7 @@ auto get_sa(const string& s) {
 }
 // calculates lcp array. it needs suffix array & original sequence with O(n)
 auto get_lcp(const string& s, const auto& sa) {
-  const int n = s.size();
-  vector lcp(n - 1, 0), isa(n, 0);
+  const int n = s.size(); vector lcp(n - 1, 0), isa(n, 0);
   for (int i = 0; i < n; i++) isa[sa[i]] = i;
   for (int i = 0, k = 0; i < n; i++) if (isa[i]) {
     for (int j = sa[isa[i] - 1]; s[i + k] == s[j + k]; k++);

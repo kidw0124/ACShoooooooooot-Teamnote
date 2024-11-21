@@ -69,6 +69,7 @@ auto sol_p_e = [](int q, const auto& qs, const int p, const int e, const int mod
 		if (n < r) return 0;
 		if (r == 0 || r == n) return 1;
 		i64 a = f(n) - f(r) - f(n - r);
+		if (a >= e) return 0;
 		int b = mul(g(n), minv(mul(g(r), g(n - r)), mod));
 		return mul(pow(p, a), b);
 	};

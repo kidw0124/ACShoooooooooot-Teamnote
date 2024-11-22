@@ -80,6 +80,9 @@
 % \subsection{Basic Arithmetic}
 % \lstinputlisting[style=mycpp]{src/math/basic-arithmetic.cpp}
 
+\subsection{Extended Euclidean Algorithm}
+\lstinputlisting[style=mycpp]{src/math/eea.cpp}
+
 \subsection{Linear Sieve}
 \lstinputlisting[style=mycpp]{src/math/linear-sieve.cpp}
 
@@ -171,11 +174,11 @@ $1\,012\,924\,417 = 483 \times 2^{21} + 1$. Primitive root: $5$.
 \subsection{DLAS Heuristic}
 \lstinputlisting[style=mycpp]{src/math/dlas.cpp}
 
-\subsection{Nim Game}
+\subsection{Special Nim Game}
 
-Nim Game의 해법 : 모두 XOR했을 때 $0$이 아니면 첫번째, $0$이면 두번째 플레이어가 승리.
+% Nim Game의 해법 : 모두 XOR했을 때 $0$이 아니면 첫번째, $0$이면 두번째 플레이어가 승리.
 
-Grundy Number : XOR(MEX({next state grundy}))
+% Grundy Number : XOR(MEX({next state grundy}))
 
 Subtraction Game : 한 번에 $k$개까지의 돌만 가져갈 수 있는 경우,
 각 더미의 돌의 개수를 $k + 1$로 나눈 나머지를 XOR 합하여 판단한다.
@@ -184,9 +187,6 @@ Index-k Nim : 한 번에 최대 k개의 더미를 골라 각각의 더미에서 
 제거할 수 있을 때, 각 binary digit에 대하여 합을 $k + 1$로 나눈 나머지를 계산한다.
 만약 이 나머지가 모든 digit에 대하여 $0$이라면 두번째, 하나라도 $0$이 아니라면
 첫번째 플레이어가 승리.
-
-% \subsection{Extended Euclidean Algorithm}
-% \lstinputlisting[style=mycpp]{src/math/eea.cpp}
 
 % \subsection{Permutation and Combination}
 % \lstinputlisting[style=mycpp]{src/math/permutation.cpp}

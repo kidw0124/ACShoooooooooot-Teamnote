@@ -30,8 +30,7 @@ ll dis_log(ll x) {
   }
 }
 ll main2() {
-  ll g;
-  ll t = 0, s = Q-1;
+  ll g; ll t = 0, s = Q-1;
   while (s % P == 0) {
     ++t;
     s /= P;
@@ -49,62 +48,53 @@ ll main2() {
   }
   // A is not P-residue
   if (pw(A, (Q-1) / P, Q) != 1) return -1;
-  for (g = 2; g < Q; ++g) {
-    if (pw(g, (Q-1) / P, Q) != 1) break;
-  }
+  for (g = 2; g < Q; ++g) if (pw(g, (Q-1) / P, Q) != 1) break;
   ll alpha = 0;
   {
     ll y, _;
     gcd(P, s, alpha, y, _);
     if (alpha < 0) alpha = (alpha % (Q-1) + Q-1) % (Q-1);
   }
-  if (t == 1) {
-    ll ans = pw(A, alpha, Q);
-    return ans;
-  }
+  if (t == 1) return pw(A, alpha, Q);
   ll a = pw(g, (Q-1) / P, Q);
   build(a);
   ll b = pw(A, add(mul(P%(Q-1), alpha, Q-1), Q-2, Q-1), Q);
-  ll c = pw(g, s, Q);
-  ll h = 1;
-  ll e = (Q-1) / s / P; // r^{t-1}
+  ll c = pw(g, s, Q); ll h = 1; ll e = (Q-1) / s / P; // r^{t-1}
   REP(i, 1, t-1) {
     e /= P;
-    ll d = pw(b, e, Q);
-    ll j = 0;
+    ll d = pw(b, e, Q); ll j = 0;
     if (d != 1) {
       j = -dis_log(d);
       if (j < 0) j = (j % (Q-1) + Q-1) % (Q-1);
     }
     b = mul(b, pw(c, mul(P%(Q-1), j, Q-1), Q), Q);
-    h = mul(h, pw(c, j, Q), Q);
-    c = pw(c, P, Q);
+    h = mul(h, pw(c, j, Q), Q); c = pw(c, P, Q);
   }
   return mul(pw(A, alpha, Q), h, Q);
 }
 // only for sqrt
 void calcH(int &t, int &h, const int p) {
-	int tmp=p-1; for(t=0;(tmp&1)==0;tmp/=2) t++; h=tmp;
+  int tmp=p-1; for(t=0;(tmp&1)==0;tmp/=2) t++; h=tmp;
 }
 // solve equation x^2 mod p = a
 bool solve(int a, int p, int &x, int &y) {
-	if(p == 2) { x = y = 1; return true; }
-	int p2 = p / 2, tmp = pw(a, p2, p);
-	if (tmp == p - 1) return false;
-	if ((p + 1) % 4 == 0) {
-		x=pw(a,(p+1)/4,p); y=p-x; return true;
-	} else {
-		int t, h, b, pb; calcH(t, h, p);
-		if (t >= 2) {
-			do {b = rand() % (p - 2) + 2;
-			} while (pw(b, p / 2, p) != p - 1);
-			pb = pw(b, h, p);
-		} int s = pw(a, h / 2, p);
-		for (int step = 2; step <= t; step++) {
-			int ss = (((ll)(s * s) % p) * a) % p;
-			for(int i=0;i<t-step;i++) ss=mul(ss,ss,p);
-			if (ss + 1 == p) s = (s * pb) % p;
+  if(p == 2) { x = y = 1; return true; }
+  int p2 = p / 2, tmp = pw(a, p2, p);
+  if (tmp == p - 1) return false;
+  if ((p + 1) % 4 == 0) {
+    x=pw(a,(p+1)/4,p); y=p-x; return true;
+  } else {
+    int t, h, b, pb; calcH(t, h, p);
+    if (t >= 2) {
+      do {b = rand() % (p - 2) + 2;
+      } while (pw(b, p / 2, p) != p - 1);
+      pb = pw(b, h, p);
+    } int s = pw(a, h / 2, p);
+    for (int step = 2; step <= t; step++) {
+      int ss = (((ll)(s * s) % p) * a) % p;
+      for(int i=0;i<t-step;i++) ss=mul(ss,ss,p);
+      if (ss + 1 == p) s = (s * pb) % p;
       pb = ((ll)pb * pb) % p;
-		} x = ((ll)s * a) % p; y = p - x;
-	} return true; 
+    } x = ((ll)s * a) % p; y = p - x;
+  } return true; 
 }

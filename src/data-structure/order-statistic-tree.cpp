@@ -1,10 +1,7 @@
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/detail/standard_policies.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
-#include <functional>
-#include <iostream>
 using namespace __gnu_pbds;
-using namespace std;
 // order_of_key (k) : Number of items strictly smaller than k
 // find_by_order(k) : K‐th element in a set (counting from zero) 
 // O(lgn)

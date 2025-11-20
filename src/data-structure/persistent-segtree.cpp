@@ -1,71 +1,41 @@
-// persistent segment tree impl: sum tree
-// initial tree index is 0
-struct pstree {
-  typedef int val_t;
-  const int DEPTH = 18;
-  const int TSIZE = 1 << 18;
-  const int MAX_QUERY = 262144;
-  struct node {
-    val_t v;
-    node *l, *r;
-  } npoll[TSIZE * 2 + MAX_QUERY * (DEPTH + 1)], *head[MAX_QUERY + 1];
-  int pptr, last_q;
-  void init() {
-    // zero-initialize, can be changed freely
-    memset(&npoll[TSIZE - 1], 0, sizeof(node) * TSIZE);
-
-    for (int i = TSIZE - 2; i >= 0; i--) {
-      npoll[i].v = 0;
-      npoll[i].l = &npoll[i * 2 + 1];
-      npoll[i].r = &npoll[i * 2 + 2];
+struct PST{
+  struct Node{ll l,r,v;};
+  vector<Node>nodes;vector<ll>root;
+  PST(ll n=0,ll qmax=0){
+    root.reserve(qmax+5);
+    nodes.reserve(4*(n+1)+20*qmax+5);
+    root.push_back(init(0,n));
+  }
+  ll init(ll s,ll e){
+    ll cur=nodes.size();
+    nodes.push_back({-1,-1,0});
+    if(s<e){
+        ll m=s+e>>1;
+        nodes[cur].l=init(s,m),nodes[cur].r=init(m+1,e);
     }
-
-    head[0] = &npoll[0];
-    last_q = 0;
-    pptr = 2 * TSIZE - 1;
+    return cur;
   }
-  // update val to pos
-  // 0 <= pos < TSIZE
-  // returns updated tree index
-  int update(int pos, int val, int prev) {
-    head[++last_q] = &npoll[pptr++];
-    node *old = head[prev], *now = head[last_q];
-
-    int flag = 1 << DEPTH;
-    for (;;) {
-      now->v = old->v + val;
-      flag >>= 1;
-      if (flag == 0) {
-        now->l = now->r = nullptr;
-        break;
-      }
-      if (flag & pos) {
-        now->l = old->l;
-        now->r = &npoll[pptr++];
-        now = now->r, old = old->r;
-      } else {
-        now->r = old->r;
-        now->l = &npoll[pptr++];
-        now = now->l, old = old->l;
-      }
+  ll add(ll s,ll e,ll pre,ll pos,ll val){
+    ll cur=nodes.size();
+    nodes.push_back(nodes[pre]);
+    if(s==e){
+        nodes[cur].v+=val;
+        return cur;
     }
-    return last_q;
+    ll m=s+e>>1;
+    if(pos<=m)nodes[cur].l=add(s,m,nodes[pre].l,pos,val);
+    else nodes[cur].r=add(m+1,e,nodes[pre].r,pos,val);
+    nodes[cur].v=nodes[nodes[cur].l].v+nodes[nodes[cur].r].v;
+    return cur;
   }
-  val_t query(int s, int e, int l, int r, node *n) {
-    if (s == l && e == r) return n->v;
-    int m = (l + r) / 2;
-    if (m >= e)
-      return query(s, e, l, m, n->l);
-    else if (m < s)
-      return query(s, e, m + 1, r, n->r);
-    else
-      return query(s, m, l, m, n->l) + query(m + 1, e, m + 1, r, n->r);
+  ll query(ll s,ll e,ll u,ll v,ll l,ll r){
+    if(r<s||e<l)return 0;
+    if(l<=s&&e<=r)return nodes[v].v-nodes[u].v;
+    ll m=s+e>>1;
+    return query(s,m,nodes[u].l,nodes[v].l,l,r)
+          +query(m+1,e,nodes[u].r,nodes[v].r,l,r);
   }
-  // query summation of [s, e] at time t
-  val_t query(int s, int e, int t) {
-    s = max(0, s);
-    e = min(TSIZE - 1, e);
-    if (s > e) return 0;
-    return query(s, e, 0, TSIZE - 1, head[t]);
-  }
+// pst.init(0,n);
+// pst.add(0,n,prev_root,pos,val);
+// pst.query(0,n,root_u,root_v,l,r);
 };

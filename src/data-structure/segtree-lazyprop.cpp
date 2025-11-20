@@ -1,13 +1,18 @@
-struct segment {
+struct Segment_Lazy {
 #ifdef ONLINE_JUDGE
   const int TSIZE = 1 << 20;  // always 2^k form && n <= TSIZE
 #else
   const int TSIZE = 1 << 3;  // always 2^k form && n <= TSIZE
 #endif
   vector<ll> segtree, prop, dat;
-  segment(ll n) {
+  Segment_Lazy() {
     segtree.resize(TSIZE * 2);
     prop.resize(TSIZE * 2);
+    dat.resize(1);
+  }
+  Segment_Lazy(int n){
+    segtree.resize(2<<(32-__builtin_clz(n)));
+    prop.resize(2<<(32-__builtin_clz(n)));
     dat.resize(n);
   }
   void seg_init(int nod, int l, int r) {
@@ -20,7 +25,6 @@ struct segment {
       segtree[nod] = segtree[nod << 1] + segtree[nod << 1 | 1];
     }
   }
-
   void seg_relax(int nod, int l, int r) {
     if (prop[nod] == 0) return;
     if (l < r) {
@@ -32,7 +36,6 @@ struct segment {
     }
     prop[nod] = 0;
   }
-
   ll seg_query(int nod, int l, int r, int s, int e) {
     if (r < s || e < l) return 0;
     if (s <= l && r <= e) return segtree[nod];
@@ -41,7 +44,6 @@ struct segment {
     return seg_query(nod << 1, l, m, s, e) +
            seg_query(nod << 1 | 1, m + 1, r, s, e);
   }
-
   void seg_update(int nod, int l, int r, int s, int e, int val) {
     if (r < s || e < l) return;
     if (s <= l && r <= e) {

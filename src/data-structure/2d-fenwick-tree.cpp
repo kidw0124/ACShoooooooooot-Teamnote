@@ -1,7 +1,6 @@
 // Call with size of the grid
 // Example: fenwick_tree_2d<int> Tree(n+1,m+1) for n x m grid indexed from 1
-template <class T>struct fenwick_tree_2d 
-{
+template <class T>struct fenwick_tree_2d {
   vector<vector<T>> x;
   fenwick_tree_2d(int n, int m) : x(n, vector<T>(m)) { }
   void add(int k1, int k2, int a) { // x[k] += a

@@ -1,18 +1,17 @@
-typedef pair<long double, long double> pi;
-bool z(long double x) { return fabs(x) < eps; }
+typedef pair<ld, ld> pi;
+bool z(ld x) { return fabs(x) < eps; }
 struct line {
-  long double a, b, c;
+  ld a, b, c;
   bool operator<(const line &l) const {
-    bool flag1 = pi(a, b) > pi(0, 0);
-    bool flag2 = pi(l.a, l.b) > pi(0, 0);
+    bool flag1 = pi(a, b) > pi(0, 0); bool flag2 = pi(l.a, l.b) > pi(0, 0);
     if (flag1 != flag2) return flag1 > flag2;
-    long double t = ccw(pi(0, 0), pi(a, b), pi(l.a, l.b));
+    ld t = ccw(pi(0, 0), pi(a, b), pi(l.a, l.b));
     return z(t) ? c * hypot(l.a, l.b) < l.c * hypot(a, b) : t > 0;
   }
   pi slope() { return pi(a, b); }
 };
 pi cross(line a, line b) {
-  long double det = a.a * b.b - b.a * a.b;
+  ld det = a.a * b.b - b.a * a.b;
   return pi((a.c * b.b - a.b * b.c) / det, (a.a * b.c - a.c * b.a) / det);
 }
 bool bad(line a, line b, line c) {

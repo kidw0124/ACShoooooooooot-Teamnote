@@ -12,7 +12,6 @@ bool gauss_jordan(VVD& a, VVD& b) {
     const int n = a.size();
     const int m = b[0].size();
     vector<int> irow(n), icol(n), ipiv(n);
-
     for (int i = 0; i < n; i++) {
         int pj = -1, pk = -1;
         for (int j = 0; j < n; j++) if (!ipiv[j])
@@ -24,7 +23,6 @@ bool gauss_jordan(VVD& a, VVD& b) {
         swap(b[pj], b[pk]);
         irow[i] = pj;
         icol[i] = pk;
-
         double c = 1.0 / a[pk][pk];
         a[pk][pk] = 1.0;
         for (int p = 0; p < n; p++) a[pk][p] *= c;

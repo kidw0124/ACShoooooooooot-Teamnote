@@ -1,6 +1,5 @@
 // k-d tree : find closest point from arbitrary point
 // Time Complexity : average O(log N), worst O(N)
-
 struct KDNode{
     pll v; bool dir;
     ll sx, ex, sy, ey;
@@ -16,23 +15,19 @@ struct KDTree{
     KDTree(){ init(); }
     void init(){ memset(chk, 0, sizeof chk); }
     void _build(int node, int s, int e){
-        chk[node] = 1;
+        chk[node] = 1;nd[node].dir = !nd[node/2].dir;
         nd[node].sx = min_element(v.begin()+s, v.begin()+e+1, xcmp)->x;
         nd[node].ex = max_element(v.begin()+s, v.begin()+e+1, xcmp)->x;
         nd[node].sy = min_element(v.begin()+s, v.begin()+e+1, ycmp)->y;
         nd[node].ey = max_element(v.begin()+s, v.begin()+e+1, ycmp)->y;
-        nd[node].dir = !nd[node/2].dir;
-        
         if(nd[node].dir) sort(v.begin()+s, v.begin()+e+1, ycmp);
         else sort(v.begin()+s, v.begin()+e+1, xcmp);
-        
         int m = s + e >> 1; nd[node].v = v[m];
         if(s <= m-1) _build(node << 1, s, m-1);
         if(m+1 <= e) _build(node << 1 | 1, m+1, e);
     }
     void build(const vector<pll> &_v){
-        v = _v; sort(all(v));
-        _build(1, 0, v.size()-1);
+        v = _v; sort(all(v));_build(1, 0, v.size()-1);
     }
     ll query(pll t, int node = 1){
         ll tmp, ret = inf;

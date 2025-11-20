@@ -1,8 +1,6 @@
 for (i = 1; i <= n; i++) {
   cin >> a[i];
-  s[i] = s[i - 1] + a[i];
-  dp[i - 1][i] = 0;
-  assist[i - 1][i] = i;
+  s[i] = s[i - 1] + a[i]; dp[i - 1][i] = 0; assist[i - 1][i] = i;
 }
 for (i = 2; i <= n; i++) {
   for (j = 0; j <= n - i; j++) {

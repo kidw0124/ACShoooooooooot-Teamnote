@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2023.10.21)  22 NOV 2024 12:09
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2023.10.21)  21 NOV 2025 01:47
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -606,60 +606,52 @@ File: lstmisc.sty 2019/09/10 1.8c (Carsten Heinz)
 ]) (./src/setting/SIMD.cpp)
 (./src/math/eea.cpp) (./src/math/linear-sieve.cpp [2])
 (./src/math/primality-test.cpp) (./src/math/pollard-rho.cpp)
-(./src/math/chinese-remainder.cpp) (./src/math/binomial.cpp) [3]
-(./src/math/lucas-theorem.cpp) (./src/math/fft.cpp) (./src/math/ntt.cpp
-[4]) (./src/math/fwht.cpp) (./src/math/matrix-operations.cpp)
-(./src/math/gaussian.cpp [5]) (./src/math/simplex.cpp)
-(./src/math/discrete-kth-root.cpp [6]) (./src/math/dlas.cpp)
-(./src/data-structure/order-statistic-tree.cpp)
-(./src/data-structure/hash-table.cpp [7]) (./src/data-structure/rope.cpp)
+(./src/math/chinese-remainder.cpp) (./src/math/binomial.cpp [3])
+(./src/math/fft.cpp) (./src/math/ntt.cpp) (./src/math/fwht.cpp [4])
+(./src/math/matrix-operations.cpp) (./src/math/gaussian.cpp)
+(./src/math/simplex.cpp [5]) (./src/math/discrete-kth-root.cpp)
+(./src/math/dlas.cpp [6]) (./src/data-structure/order-statistic-tree.cpp)
+(./src/data-structure/hash-table.cpp) (./src/data-structure/rope.cpp)
+(./src/data-structure/fenwick-tree.cpp)
+(./src/data-structure/2d-fenwick-tree.cpp) [7]
+(./src/data-structure/segtree-lazyprop.cpp)
 (./src/data-structure/persistent-segtree.cpp)
-(./src/data-structure/splay-tree.cpp [8]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-)
+(./src/data-structure/pst-lazy.cpp [8]) (./src/data-structure/splay-tree.cpp)
 (./src/data-structure/bitset-to-set.cpp [9])
 (./src/data-structure/lichao-tree.cpp) (./src/data-structure/wavelet.cpp
-Underfull \vbox (badness 2326) has occurred while \output is active []
+[10])
+Underfull \vbox (badness 2088) has occurred while \output is active []
 
- [10])
+
 (./src/dp/convex-hull-trick-linear.cpp) (./src/dp/dnc-optimization.cpp)
-(./src/dp/knuth-optimization.cpp) (./src/dp/bitset.cpp [11])
-(./src/dp/Kitamasa.cpp) (./src/dp/Berlekamp-Massey.cpp) (./src/dp/sosdp.cpp)
-(./src/graph/scc.cpp [12]) (./src/graph/bcc.cpp) (./src/graph/spfa.cpp)
-(./src/graph/centroid-decomposition.cpp [13]) (./src/graph/lca.cpp)
-(./src/graph/hld.cpp) (./src/graph/stable-marriage.cpp) [14]
+[11] (./src/dp/knuth-optimization.cpp) (./src/dp/bitset.cpp)
+(./src/dp/Kitamasa.cpp) (./src/dp/sosdp.cpp [12]) (./src/graph/scc.cpp)
+(./src/graph/bcc.cpp) (./src/graph/spfa.cpp [13])
+(./src/graph/centroid-decomposition.cpp) (./src/graph/lca.cpp)
+(./src/graph/hld.cpp) [14] (./src/graph/stable-marriage.cpp)
 (./src/graph/bipartite-matching-khun.cpp) (./src/graph/maxflow-dinic.cpp)
-(./src/graph/maxflow-ed.cpp [15]) (./src/graph/mcmf.cpp)
-(./src/graph/general-mincut-stoer-wagner.cpp [16])
+[15] (./src/graph/maxflow-ed.cpp) (./src/graph/mcmf.cpp
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-(./src/graph/hungarian.cpp) (./src/graph/general-mathching-dense-weighted.cpp
-[17]
+ [16])
+(./src/graph/general-mincut-stoer-wagner.cpp) (./src/graph/hungarian.cpp
+[17]) (./src/graph/general-mathching-dense-weighted.cpp
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [18])
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-(./src/graph/OfflineDC.cpp) (./src/geometry/basic-operations.cpp [19]
+ [18]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 )
-(./src/geometry/rotating-calipers.cpp [20])
-(./src/geometry/half-plane-intersection.cpp)
-(./src/geometry/minimum-perimeter-triangle.cpp)
-(./src/geometry/minimum-enclosing-circle.cpp)
-(./src/geometry/point-in-polygon.cpp [21]) (./src/geometry/polygon-cut.cpp)
-(./src/geometry/point-in-triangle.cpp
+(./src/graph/OfflineDC.cpp [19]) (./src/geometry/basic-operations.cpp
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [22])
-(./src/geometry/voronoi.cpp
+ [20])
+(./src/geometry/rotating-calipers.cpp)
+(./src/geometry/half-plane-intersection.cpp)
+(./src/geometry/minimum-perimeter-triangle.cpp)
+(./src/geometry/minimum-enclosing-circle.cpp [21])
+(./src/geometry/point-in-polygon.cpp) (./src/geometry/polygon-cut.cpp)
+(./src/geometry/point-in-triangle.cpp [22]) (./src/geometry/voronoi.cpp
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [23])
@@ -667,10 +659,10 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 (./src/string/aho-corasick.cpp) (./src/string/suffix-array-lcp.cpp)
 (./src/string/manacher.cpp) (./src/string/eertree.cpp) [25] (./teamnote.aux) ) 
 Here is how much of TeX's memory you used:
- 13529 strings out of 481370
- 230274 string characters out of 5926566
- 1286947 words of memory out of 5000000
- 30157 multiletter control sequences out of 15000+600000
+ 13555 strings out of 481370
+ 230844 string characters out of 5926566
+ 1230031 words of memory out of 5000000
+ 30177 multiletter control sequences out of 15000+600000
  537411 words of font info for 78 fonts, out of 8000000 for 9000
  264 hyphenation exceptions out of 8191
  46i,12n,78p,1197b,2559s stack positions out of 5000i,500n,10000p,200000b,80000s

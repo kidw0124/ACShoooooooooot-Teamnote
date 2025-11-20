@@ -35,7 +35,7 @@ struct PST{
     return query(s,m,nodes[u].l,nodes[v].l,l,r)
           +query(m+1,e,nodes[u].r,nodes[v].r,l,r);
   }
-// pst.init(0,n);
-// pst.add(0,n,prev_root,pos,val);
-// pst.query(0,n,root_u,root_v,l,r);
+  // pst.init(0,n);
+  // pst.add(0,n,prev_root,pos,val);
+  // pst.query(0,n,root_u,root_v,l,r);
 };

@@ -8,8 +8,7 @@ tuple<ld,vector<vector<ld>>,ll,ll> inv_det_rnk(auto A) {
   }
   for (int i = 0; i < n; i++) {
     if (is_zero(A[i][i])) {
-      ld maxv = 0;
-      int maxid = -1;
+      ld maxv = 0; int maxid = -1;
       for (int j = i + 1; j < n; j++) {
         auto cur = abs(A[j][i]);
         if (maxv < cur) {

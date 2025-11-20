@@ -11,30 +11,23 @@ unordered_map<ll, ll> ht;
 #define REP(i, l, r) for (int i = (l); i <= (r); ++i)
 // discrete log : O(sqrt(Q))
 void build(ll a) { // ord(a) = P < sqrt(Q)
-  base = a;
-  ht.clear();
+  base = a; ht.clear();
   ae[0] = 1; ae[1] = a; aXe[0] = 1; aXe[1] = pw(a, X, Q);
   iaXe[0] = 1; iaXe[1] = pw(aXe[1], Q-2, Q);
   REP(i, 2, X-1) {
-    ae[i] = mul(ae[i-1], ae[1], Q);
-    aXe[i] = mul(aXe[i-1], aXe[1], Q);
-    iaXe[i] = mul(iaXe[i-1], iaXe[1], Q);
+    ae[i]=mul(ae[i-1],ae[1],Q);aXe[i]=mul(aXe[i-1],aXe[1],Q);iaXe[i]=mul(iaXe[i-1],iaXe[1],Q);
   }
   FOR(i, X) ht[ae[i]] = i;
 }
 ll dis_log(ll x) {
   FOR(i, X) {
-    ll iaXi = iaXe[i];
-    ll rst = mul(x, iaXi, Q);
+    ll iaXi = iaXe[i]; ll rst = mul(x, iaXi, Q);
     if (ht.count(rst)) return i*X + ht[rst];
   }
 }
-ll main2() {
+ll main2() { // solve x^P = A mod Q
   ll g; ll t = 0, s = Q-1;
-  while (s % P == 0) {
-    ++t;
-    s /= P;
-  }
+  while (s % P == 0) ++t,s /= P;
   if (A == 0) return 0;
   if (t == 0) {
     // a^{P^-1 mod phi(Q)}
@@ -49,20 +42,15 @@ ll main2() {
   // A is not P-residue
   if (pw(A, (Q-1) / P, Q) != 1) return -1;
   for (g = 2; g < Q; ++g) if (pw(g, (Q-1) / P, Q) != 1) break;
-  ll alpha = 0;
-  {
-    ll y, _;
-    gcd(P, s, alpha, y, _);
-    if (alpha < 0) alpha = (alpha % (Q-1) + Q-1) % (Q-1);
-  }
+  ll alpha = 0; ll y, _; gcd(P, s, alpha, y, _);
+  if (alpha < 0) alpha = (alpha % (Q-1) + Q-1) % (Q-1);
   if (t == 1) return pw(A, alpha, Q);
   ll a = pw(g, (Q-1) / P, Q);
   build(a);
   ll b = pw(A, add(mul(P%(Q-1), alpha, Q-1), Q-2, Q-1), Q);
   ll c = pw(g, s, Q); ll h = 1; ll e = (Q-1) / s / P; // r^{t-1}
   REP(i, 1, t-1) {
-    e /= P;
-    ll d = pw(b, e, Q); ll j = 0;
+    e /= P; ll d = pw(b, e, Q); ll j = 0;
     if (d != 1) {
       j = -dis_log(d);
       if (j < 0) j = (j % (Q-1) + Q-1) % (Q-1);

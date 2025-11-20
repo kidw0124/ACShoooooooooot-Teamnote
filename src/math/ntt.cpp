@@ -19,25 +19,20 @@ void ntt(poly& f, bool inv = 0) {
     for (int j = 0; j < n; j += i) {
       for (int k = 0; k < (i >> 1); k++) {
         ll u = f[j | k], v = f[j | k | i >> 1] * root[step * k] % mod;
-        f[j | k] = (u + v) % mod;
-        f[j | k | i >> 1] = (u - v) % mod;
+        f[j | k] = (u + v) % mod; f[j | k | i >> 1] = (u - v) % mod;
         if (f[j | k | i >> 1] < 0) f[j | k | i >> 1] += mod;
       }
     }
   }
   ll t = pw(n, mod - 2);
-  if (inv)
-    for (int i = 0; i < n; i++) f[i] = f[i] * t % mod;
+  if (inv) for (int i = 0; i < n; i++) f[i] = f[i] * t % mod;
 }
 
 vector<ll> multiply(poly& _a, poly& _b) {
   vector<ll> a(all(_a)), b(all(_b));
   int n = 2;
   while (n < a.size() + b.size()) n <<= 1;
-  a.resize(n);
-  b.resize(n);
-  ntt(a);
-  ntt(b);
+  a.resize(n);b.resize(n);ntt(a);ntt(b);
   for (int i = 0; i < n; i++) a[i] = a[i] * b[i] % mod;
   ntt(a, 1);
   return a;

@@ -24,6 +24,5 @@ double dac3(int l, int r) {
   return ans;
 }
 double closest_triple(vector<pt> &pts) {
-  sort(pts.begin(), pts.end(), cmp_x);
-  return dac3(0, pts.size() - 1);
+  sort(pts.begin(), pts.end(), cmp_x);return dac3(0, pts.size() - 1);
 }

@@ -3,19 +3,12 @@ vector<Point> cut_polygon(const vector<Point>& polygon, Line line) {
     if (!polygon.size()) return polygon;
     typedef vector<Point>::const_iterator piter;
     piter la, lan, fi, fip, i, j;
-    la = lan = fi = fip = polygon.end();
-    i = polygon.end() - 1;
+    la = lan = fi = fip = polygon.end(); i = polygon.end() - 1;
     bool lastin = diff(ccw_line(line, polygon[polygon.size() - 1]), 0) > 0;
     for (j = polygon.begin() ; j != polygon.end() ; j++) {
         bool thisin = diff(ccw_line(line, *j), 0) > 0;
-        if (lastin && !thisin) {
-            la = i;
-            lan = j;
-        }
-        if (!lastin && thisin) {
-            fi = j;
-            fip = i;
-        }
+        if (lastin && !thisin) la = i, lan = j;
+        if (!lastin && thisin) fi = j, fip = i;
         i = j;
         lastin = thisin;
     }
